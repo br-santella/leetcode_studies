@@ -1,4 +1,4 @@
-# Merge 2 string with max 100 letters [Easy][Acceptance: 82,1%]
+# Merge Strings Alternately [Easy][Acceptance: 82,1%]
 # https://leetcode.com/problems/merge-strings-alternately/description
 
 class Solution:
@@ -6,7 +6,7 @@ class Solution:
         result = ""
         while len(word1) > 0 and len(word2) > 0:
             result = result + word1[0] + word2[0]
-            word1 = word1[1:]
+            word1 = word1[1:] 
             word2 = word2[1:]
 
         if len(word1) > 0:
@@ -16,5 +16,6 @@ class Solution:
 
         return(result) 
 
-sol = Solution() 
-final_output = sol.mergeAlternately("abc", "pqr")
+""" Slice String - Examples
+string[2:]   -> Starts at index 2, excludes indices 0 and 1
+string[:5]   -> Includes indices 0-4, excludes index 5 and beyond """
