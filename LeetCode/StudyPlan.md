@@ -5,7 +5,7 @@ Fell free to use this checklist in your studies! Link: https://leetcode.com/stud
 - [x] 1768. Merge Strings Alternately [(Solution)](./1768-merge-strings-alternately.py)
 - [x] 1071. Greatest Common Divisor of Strings [(Solution)](./1071-greatest-common-divisor-of-strings.py)
 - [x] 1431. Kids With the Greatest Number of Candies [(Solution)](./1431-kids-with-the-greatest-number-of-candies.py)
-- [ ] 605. Can Place Flowers
+- [x] 605. Can Place Flowers [(Solution)](./605-can-place-flowers.py)
 - [ ] 345. Reverse Vowels of a String
 - [ ] 151. Reverse Words in a String
 - [ ] 238. Product of Array Except Self
