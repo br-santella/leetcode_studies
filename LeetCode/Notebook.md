@@ -1,5 +1,5 @@
-# 📙💡​​ LeetCode Learning Questions & Answers
-This page is designed for all the small questions I've had while solving LeetCode problems. Most of them are language-related (Python) or about the algorithms themselves.
+# 📙💡​​ Learning Questions & Answers
+All the small questions I've had while solving LeetCode problems.
 
 ### Q1: Why use a class `Solution`?
 
@@ -11,3 +11,12 @@ Using a class wrapper serves several important purposes:
 2. **Data Isolation**: This ensures that leftover data from Test Case #1 doesn't accidentally interfere with Test Case #2. Each instance is independent and clean.
 
 3. **Standard Convention**: Most coding interview platforms expect solutions to follow this class-based structure, making it a standard practice in competitive programming.
+
+
+# 🎯​🆙​ LeetCode 75 - Ace code interview with 75 Qs
+Link: https://leetcode.com/studyplan/leetcode-75/
+
+### Array/String
+- [x] 1768. Merge Strings Alternately [Solutions](/LeetCode/[1768] Merge Strings Alternately.py)
+- [x] 1071. Greatest Common Divisor of Strings
+- [ ] 1431. Kids With the Greatest Number of Candies
