@@ -17,6 +17,6 @@ Using a class wrapper serves several important purposes:
 Link: https://leetcode.com/studyplan/leetcode-75/
 
 ### Array/String
-- [x] 1768. Merge Strings Alternately [Solution](./%5B1768%5D%20Merge%20Strings%20Alternately.py)
-- [x] 1071. Greatest Common Divisor of Strings
+- [x] 1768. Merge Strings Alternately [(Solution)](./1768-Merge_Strings_Alternately.py)
+- [x] 1071. Greatest Common Divisor of Strings [(Solution)](./1071-Greatest_Common_Divisor.py)
 - [ ] 1431. Kids With the Greatest Number of Candies
