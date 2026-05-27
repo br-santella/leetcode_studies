@@ -1,6 +1,6 @@
 # Code Studies 📚
 
-Algorithm and data structure studies.
+Algorithm and data structure studies. Check the [LeetCode](./LeetCode) problems solved!
 
 ## 🎯 Repository Purpose
 
@@ -26,9 +26,3 @@ My mission is to create a repository that not only tracks my progress but also p
 ## 🌟 Contributing & Feedback
 
 If you find these materials helpful or have suggestions for improvement, feel free to reach out or share this repository with fellow students!
-
----
-
-**Happy coding and learning! 🚀**
-
-If you find this repository helpful, feel free to star it or share it with others on their learning journey.
