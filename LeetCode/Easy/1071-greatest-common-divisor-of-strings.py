@@ -28,7 +28,7 @@ class Solution:
 """ COMMENTS
 - The greatest common divisor must be a prefix of each string
 - If a GCD exists, the sum of both string in any order should be equal
-- The verification of str2 asn the GCD is only to optimize memory use and runtime, not essential
+- The verification of str2 as the GCD is only to optimize memory use and runtime, not essential
 - The core rule of the subtraction GCD method is this: If a smaller block can perfectly measure a larger block, 
 it must also be able to perfectly measure the leftover piece when you cut the smaller block out of the larger one.
 """
