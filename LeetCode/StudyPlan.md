@@ -2,12 +2,12 @@
 Fell free to use this checklist in your studies! Link: https://leetcode.com/studyplan/leetcode-75/
 
 ### Array/String
-- [x] 1768. Merge Strings Alternately [(Solution)](./1768-merge-strings-alternately.py)
-- [x] 1071. Greatest Common Divisor of Strings [(Solution)](./1071-greatest-common-divisor-of-strings.py)
-- [x] 1431. Kids With the Greatest Number of Candies [(Solution)](./1431-kids-with-the-greatest-number-of-candies.py)
-- [x] 605. Can Place Flowers [(Solution)](./605-can-place-flowers.py)
-- [x] 345. Reverse Vowels of a String [(Solution)](./345-reverse-vowels-of-a-string.py)
-- [ ] 151. Reverse Words in a String
+- [x] 1768. Merge Strings Alternately [(Solution)](Easy/1768-merge-strings-alternately.py)
+- [x] 1071. Greatest Common Divisor of Strings [(Solution)](Easy/1071-greatest-common-divisor-of-strings.py)
+- [x] 1431. Kids With the Greatest Number of Candies [(Solution)](Easy/1431-kids-with-the-greatest-number-of-candies.py)
+- [x] 605. Can Place Flowers [(Solution)](Easy/605-can-place-flowers.py)
+- [x] 345. Reverse Vowels of a String [(Solution)](Easy/345-reverse-vowels-of-a-string.py)
+- [x] 151. Reverse Words in a String [(Solution)](Medium/151-reverse-words-in-a-string.py)
 - [ ] 238. Product of Array Except Self
 - [ ] 334. Increasing Triplet Subsequence
 - [ ] 443. String Compression
