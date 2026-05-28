@@ -1,7 +1,7 @@
 # 📙💡​​ Learning: Questions & Answers
 All the small questions I've had while solving LeetCode problems.
 
-### Q1: Why use a class `Solution`?
+## Q1: Why use a class `Solution`?
 
 **Answer:**
 Using a class wrapper serves several important purposes:
@@ -12,12 +12,12 @@ Using a class wrapper serves several important purposes:
 
 3. **Standard Convention**: Most coding interview platforms expect solutions to follow this class-based structure, making it a standard practice in competitive programming.
 
-### Q2: What is the time-complexity?
+## Q2: What is the time-complexity?
 
 **Answer:**
 Time complexity measures **how the runtime of an algorithm grows as the input size ($n$) increases.** Instead of measuring execution time in seconds (which changes depending on how fast a computer's processor is), time complexity looks at the *number of operations* the code performs. For example, if you pass an array of 10 items versus 1,000,000 items into your function, time complexity tells you how much more work your code has to do.
 
-### Q3: What is Big O Notation, and why it matters for LeetCode?
+## Q3: What is Big O Notation, and why it matters for LeetCode?
 
 **Answer:**
 Big O notation is a mathematical notation used to describe the worst-case scenario of an algorithm's time (or space) complexity. It strips away all the minor details and focuses on the biggest factor driving the growth.
@@ -31,7 +31,7 @@ Big O notation is a mathematical notation used to describe the worst-case scenar
 | $O(n^2)$ | Quadratic Time | The runtime grows proportionally to the square of the input size. | **Nested loops**. If you loop through an array, and for every element, you loop through it again. |
 | $O(2^n)$ | Exponential Time | The growth doubles with each addition to the input. Very slow. | Recursive algorithms that solve a problem by solving two smaller versions of it (like naive Fibonacci). |
 
-#### Why it matters for LeetCode:
+### Why BigO matters for LeetCode:
 Every LeetCode problem includes a **Constraints** section (e.g., $n \le 10^5$). These constraints are a massive hint telling you exactly what Big O efficiency your solution needs to achieve to avoid a **TLE (Time Limit Exceeded)** error.
 
 As a general rule of thumb, Python, Java, and C++ can handle roughly $10^7$ to $10^8$ operations per second. You can use this cheat sheet to predict if your code will pass:
