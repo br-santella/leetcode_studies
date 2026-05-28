@@ -17,7 +17,7 @@ Using a class wrapper serves several important purposes:
 **Answer:**
 Time complexity measures **how the runtime of an algorithm grows as the input size ($n$) increases.** Instead of measuring execution time in seconds (which changes depending on how fast a computer's processor is), time complexity looks at the *number of operations* the code performs. For example, if you pass an array of 10 items versus 1,000,000 items into your function, time complexity tells you how much more work your code has to do.
 
-## Q3: What is Big O Notation, and why it matters for LeetCode?
+## Q3: What is Big O Notation?
 
 **Answer:**
 Big O notation is a mathematical notation used to describe the worst-case scenario of an algorithm's time (or space) complexity. It strips away all the minor details and focuses on the biggest factor driving the growth.
