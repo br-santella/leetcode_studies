@@ -1,9 +1,9 @@
-# 📙 Pre-Security Notebook
-Main concepts of the Pre-Security Course by TryHackMe.
+# 📙🔐​ Pre-Security Notebook
+Main concepts of the Pre-Security Learning Path by TryHackMe. Access: https://tryhackme.com/paths
 
-## Network Fundamentals
+## ​🌐​ Network Fundamentals
 
-### Network
+### ​Network
 Networks are simply things connected and can be found in all walks of life:
 
   - A city's public transportation system
