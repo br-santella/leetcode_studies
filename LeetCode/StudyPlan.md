@@ -1,4 +1,4 @@
-# 🎯​🆙​ LeetCode 75 - Ace code interview with 75 Qs
+# 🎯​🆙​ LeetCode 75Q
 Fell free to use this checklist in your studies! Link: https://leetcode.com/studyplan/leetcode-75/
 
 ### Array/String
