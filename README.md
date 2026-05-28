@@ -1,4 +1,4 @@
-# Code Studies 📚
+# Leetcode Studies 📚
 
 Algorithm and data structure studies. Check the [LeetCode](./LeetCode) problems solved!
 
