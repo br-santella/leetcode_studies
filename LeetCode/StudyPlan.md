@@ -14,7 +14,7 @@ Fell free to use this checklist in your studies! Link: https://leetcode.com/stud
 
 
 ### Two Pointers
-- [x] 283. Move Zeroes [(Solution)](Medium/283-move-zeroes.py)
+- [x] 283. Move Zeroes [(Solution)](Easy/283-move-zeroes.py)
 - [ ] 392. Is Subsequence
 - [ ] 11. Container With Most Water
 - [ ] 1679. Max Number of K-Sum Pairs
