@@ -1,140 +1,63 @@
 # 🗂️ Hash Maps
 
-> [!NOTE]
-> **Difficulty:** ⭐ Beginner
->
-> **Category:** Data Structure
->
-> **Common Time Complexity:** **O(1)** average lookup
->
-> **Common Space Complexity:** **O(n)**
+> Fast key-value lookup data structure.
 
 ---
 
-# Table of Contents
+# 📌 Definition
 
-- [Definition](#definition)
-- [Characteristics](#characteristics)
-- [Internal Structure](#internal-structure)
-- [How a Hash Map Works](#how-a-hash-map-works)
-- [Hashable Objects](#hashable-objects)
-- [Hash Function](#hash-function)
-- [Hash Collisions](#hash-collisions)
-- [Operations](#operations)
-- [Complexity Analysis](#complexity-analysis)
-- [Advantages](#advantages)
-- [Limitations](#limitations)
-- [Pattern Recognition](#pattern-recognition)
-- [Common Applications](#common-applications)
-- [Code Examples](#code-examples)
-- [Common Interview Problems](#common-interview-problems)
-- [Common Mistakes](#common-mistakes)
-- [Summary](#summary)
+A **Hash Map** stores data as **key → value** pairs, allowing values to be accessed directly through a key instead of searching sequentially.
+
+```
+key ─────► value
+```
+
+**Main idea**
+
+> Trade **memory** for **speed**.
 
 ---
 
-# Definition
+# 🎯 When to Use
 
-A **Hash Map** (also referred to as a **Hash Table** or **Dictionary**) is a data structure that stores information as **key-value pairs**, allowing efficient insertion, retrieval, update, and deletion of data through the use of a **hash function**.
+Think about a Hash Map when a problem mentions:
 
-Unlike sequential data structures, where locating an element may require scanning multiple positions, a Hash Map computes the storage location directly from the key, making element access nearly instantaneous under normal conditions.
+- ✅ Fast lookup
+- ✅ Previously seen values
+- ✅ Duplicates
+- ✅ Count frequency
+- ✅ Key → Value relationship
+- ✅ Memoization
+- ✅ Cache
+- ✅ Grouping objects
+
+Typical interview phrases:
+
+- "Find duplicates"
+- "Return indices"
+- "Count occurrences"
+- "Have we seen this before?"
+- "Store previous results"
 
 ---
 
-## Key Concepts
+# 🧠 Visual Representation
 
-A Hash Map is composed of three fundamental elements:
-
-| Component | Description |
-|-----------|-------------|
-| **Key** | Unique identifier used to access a value. |
-| **Value** | Data associated with the key. |
-| **Hash Function** | Function that converts the key into an array index. |
-
----
-
-## Key-Value Relationship
+Without Hash Map
 
 ```
-Key ─────────► Value
-```
-
-Example:
-
-```
-Student ID ─────────► Student Name
-
-1023 ───────────────► Alice
-1054 ───────────────► Bob
-2031 ───────────────► Charlie
-```
-
-Another example:
-
-```
-Country
+Emma?
 
 ↓
 
-Capital
-
-Brazil  → Brasília
-Japan   → Tokyo
-France  → Paris
-```
-
----
-
-# Characteristics
-
-| Property | Value |
-|----------|-------|
-| Data Organization | Key → Value |
-| Ordered | Depends on implementation |
-| Duplicate Keys | ❌ No |
-| Duplicate Values | ✅ Yes |
-| Mutable | ✅ Yes |
-| Average Lookup | O(1) |
-| Worst Lookup | O(n) |
-
----
-
-# Why Hash Maps Exist
-
-Suppose we want to determine whether a student named **Emma** exists in a list.
-
-## Without a Hash Map
-
-```
 Alice
 Bob
 Charlie
 Daniel
 Emma
-Frank
 ```
 
-The program checks every element until it finds Emma.
-
-Worst case:
-
-```
-Alice
-↓
-
-Bob
-↓
-
-Charlie
-↓
-
-Daniel
-↓
-
-Emma
-```
-
-Time Complexity:
+Search complexity
 
 ```
 O(n)
@@ -142,17 +65,15 @@ O(n)
 
 ---
 
-## With a Hash Map
+With Hash Map
 
 ```
 {
-    "Alice": 91,
-    "Bob": 84,
-    "Emma": 99
+    "Alice":91,
+    "Bob":84,
+    "Emma":99
 }
 ```
-
-Lookup:
 
 ```
 Emma
@@ -162,321 +83,576 @@ Emma
 99
 ```
 
-Average complexity:
+Search complexity
 
 ```
 O(1)
 ```
 
-Instead of searching sequentially, the key is transformed directly into a storage location.
-
 ---
 
-# Internal Structure
-
-Conceptually, a Hash Map can be viewed as an array.
+# ⚙️ Internal Structure
 
 ```
-Index
+          Key
 
-0
-1
-2
-3
-4
-5
-6
-7
-8
-...
+           │
+
+           ▼
+
+    Hash Function
+
+           │
+
+           ▼
+
+      Bucket Index
+
+           │
+
+           ▼
+
+         Value
 ```
 
-Each position is called a **bucket**.
-
-The hash function determines which bucket stores each key.
-
-```
-Key
-
-↓
-
-Hash Function
-
-↓
-
-Bucket
-
-↓
-
-Stored Value
-```
-
----
-
-## Example
-
-Suppose we insert:
-
-```
-"apple" : 15
-```
-
-The process becomes:
+Example
 
 ```
 "apple"
 
 ↓
 
-hash("apple")
+hash()
 
 ↓
 
-Bucket 7
+bucket 7
 
 ↓
 
-Store 15
-```
-
-Searching follows exactly the same path.
-
-```
-"apple"
-
-↓
-
-hash("apple")
-
-↓
-
-Bucket 7
-
-↓
-
-Return 15
+15
 ```
 
 ---
 
-# How a Hash Map Works
+# 🔑 Hashable Types
 
-The process consists of four steps.
+A key **must be immutable**.
 
-## Step 1
-
-Receive a key.
-
-```
-"banana"
-```
-
-↓
-
-## Step 2
-
-Apply the hash function.
-
-```
-hash("banana")
-```
-
-↓
-
-## Step 3
-
-Generate an integer.
-
-Example:
-
-```
-38472919
-```
-
-↓
-
-## Step 4
-
-Convert that integer into a valid array position.
-
-```
-38472919 % table_size
-
-↓
-
-Bucket 23
-```
-
-The value is stored at Bucket 23.
+| Type | Hashable |
+|-------|----------|
+| int | ✅ |
+| float | ✅ |
+| bool | ✅ |
+| str | ✅ |
+| tuple | ✅ |
+| list | ❌ |
+| dict | ❌ |
+| set | ❌ |
 
 ---
 
-# Visual Representation
+# ⚠️ Hash Collision
 
-```mermaid
-flowchart LR
-
-A[Key]
--->B[Hash Function]
-
-B
--->C[Hash Code]
-
-C
--->D[Bucket Index]
-
-D
--->E[Stored Value]
-```
-
----
-
-# Hash Function
-
-A **hash function** transforms a key into a deterministic integer.
-
-A good hash function should satisfy the following properties.
-
-| Property | Description |
-|-----------|-------------|
-| Deterministic | Same key always produces the same hash. |
-| Fast | Must execute in constant time. |
-| Uniform | Keys should be evenly distributed across buckets. |
-| Collision Resistant | Different keys should rarely map to the same bucket. |
-
----
-
-## Example
+A collision happens when two keys map to the same bucket.
 
 ```
 hash("cat")
 
 ↓
 
-498273
-```
+5
 
-```
-498273 % 16
+hash("dog")
 
 ↓
 
-1
+5
 ```
 
-Store at Bucket 1.
+```
+Bucket 5
+
+cat
+dog
+```
+
+### Common solutions
+
+**Chaining**
+
+```
+Bucket
+
+↓
+
+[
+ cat,
+ dog,
+ bird
+]
+```
+
+**Open Addressing**
+
+```
+5 occupied
+
+↓
+
+6 empty
+
+↓
+
+Insert
+```
+
+Average complexity remains **O(1)**.
 
 ---
 
-# Hashable Objects
+# 📊 Complexity
 
-Not every object can be used as a key.
-
-A key must be **hashable**, meaning:
-
-- It has a hash value.
-- Its hash value never changes during its lifetime.
-
----
-
-## Common Hashable Types
-
-| Python Type | Hashable |
-|-------------|----------|
-| int | ✅ |
-| float | ✅ |
-| bool | ✅ |
-| str | ✅ |
-| tuple | ✅ (if immutable) |
-| bytes | ✅ |
+| Operation | Average | Worst |
+|----------|:-------:|:-----:|
+| Insert | O(1) | O(n) |
+| Search | O(1) | O(n) |
+| Update | O(1) | O(n) |
+| Delete | O(1) | O(n) |
 
 ---
 
-## Non-Hashable Types
+# 💻 Python
 
-| Python Type | Reason |
-|-------------|--------|
-| list | Mutable |
-| dict | Mutable |
-| set | Mutable |
-
-Example:
+## Create
 
 ```python
-my_dict = {}
-
-my_dict[[1, 2, 3]] = "value"
+my_map = {}
 ```
 
-Result:
+---
+
+## Insert
 
 ```python
-TypeError: unhashable type: 'list'
-```
-
-Lists can change after insertion, invalidating the computed hash.
-
----
-
-# When Should You Think About Using a Hash Map?
-
-A Hash Map is usually the correct choice when a problem requires **fast lookup**.
-
-Typical interview phrases include:
-
-- "Have we seen this value before?"
-- "Find duplicates."
-- "Return the index."
-- "Count occurrences."
-- "Store previous results."
-- "Check membership."
-- "Associate two datasets."
-
----
-
-## Decision Tree
-
-```mermaid
-flowchart TD
-
-A[Need fast lookup?]
-
-A -->|Yes| B[Hash Map]
-
-A -->|No| C[Continue evaluating]
-
-B --> D[Need ordering?]
-
-D -->|No| E[Use Hash Map]
-
-D -->|Yes| F[Consider TreeMap / Ordered Map]
+my_map["apple"] = 5
 ```
 
 ---
 
-# Common Applications
+## Lookup
 
-| Application | Description |
-|--------------|-------------|
-| Frequency Counting | Count occurrences of elements. |
-| Memoization | Store previously computed results. |
-| Caching | Avoid repeated expensive computations. |
-| Database Indexing | Fast record retrieval. |
-| Symbol Tables | Variable lookup in compilers. |
-| Graph Representation | Adjacency maps. |
-| Duplicate Detection | Membership testing. |
+```python
+value = my_map["apple"]
+```
 
 ---
 
-# Operations
+## Safe Lookup
 
-The four most common operations performed on a Hash Map are:
+```python
+value = my_map.get("apple")
+```
 
-| Operation | Description |
-|-----------|-------------|
-| Insert | Add a new key-value pair. |
-| Search | Retrieve the value associated with a key. |
-| Update | Modify an existing value. |
-| Delete | Remove a key-value pair. |
+---
 
-The following sections explain each operation individually.
+## Update
+
+```python
+my_map["apple"] += 1
+```
+
+---
+
+## Delete
+
+```python
+del my_map["apple"]
+```
+
+---
+
+# 📈 Frequency Map
+
+One of the most common interview patterns.
+
+```python
+freq = {}
+
+for item in data:
+    freq[item] = freq.get(item, 0) + 1
+```
+
+Equivalent to
+
+```python
+if item not in freq:
+    freq[item] = 1
+else:
+    freq[item] += 1
+```
+
+---
+
+# 📝 Common Templates
+
+## Count Frequencies
+
+```python
+freq = {}
+
+for n in nums:
+    freq[n] = freq.get(n, 0) + 1
+```
+
+---
+
+## Store First Index
+
+```python
+seen = {}
+
+for i, n in enumerate(nums):
+    if n not in seen:
+        seen[n] = i
+```
+
+---
+
+## Check Duplicate
+
+```python
+seen = set()
+
+for n in nums:
+
+    if n in seen:
+        return True
+
+    seen.add(n)
+
+return False
+```
+
+---
+
+## Reverse Mapping
+
+```python
+reverse = {}
+
+for k, v in original.items():
+    reverse[v] = k
+```
+---
+
+# 🧩 Common Patterns
+
+## 1. Frequency Counter
+
+**Use when**
+
+- Count occurrences
+- Find the most/least frequent element
+- Compare frequencies
+
+Problems
+
+- Top K Frequent Elements
+- Valid Anagram
+- Majority Element
+
+---
+
+## 2. Lookup Table
+
+Store values to avoid repeated searches.
+
+```python
+lookup = {}
+
+for item in data:
+    lookup[item.id] = item
+```
+
+---
+
+## 3. Visited Set
+
+Track processed elements.
+
+```python
+visited = set()
+
+for node in nodes:
+
+    if node in visited:
+        continue
+
+    visited.add(node)
+```
+
+---
+
+## 4. Two Sum Pattern
+
+Store previously visited values.
+
+```python
+seen = {}
+
+for i, n in enumerate(nums):
+
+    target_value = target - n
+
+    if target_value in seen:
+        return [seen[target_value], i]
+
+    seen[n] = i
+```
+
+---
+
+## 🎯 Pattern Recognition
+
+| If the problem says... | Think Hash Map? |
+|------------------------|:---------------:|
+| Count occurrences | ✅ |
+| Find duplicates | ✅ |
+| Previously seen | ✅ |
+| Return indices | ✅ |
+| Fast lookup | ✅ |
+| Key → Value | ✅ |
+| Group objects | ✅ |
+| Memoization | ✅ |
+| Cache | ✅ |
+
+---
+
+# 🏆 Common LeetCode Problems
+
+| Problem | Pattern |
+|----------|---------|
+| Two Sum | Lookup |
+| Contains Duplicate | Membership |
+| Valid Anagram | Frequency Map |
+| Group Anagrams | Grouping |
+| Top K Frequent Elements | Frequency Map |
+| Longest Consecutive Sequence | Membership |
+| Happy Number | Visited Set |
+| Isomorphic Strings | Mapping |
+| Ransom Note | Frequency Counter |
+| Word Pattern | Mapping |
+
+---
+
+# ⚠️ Common Mistakes
+
+❌ Using mutable objects as keys.
+
+```python
+my_map[[1,2,3]] = 5
+```
+
+---
+
+❌ Forgetting to initialize counters.
+
+```python
+freq[x] += 1
+```
+
+Correct
+
+```python
+freq[x] = freq.get(x, 0) + 1
+```
+
+---
+
+❌ Assuming every language preserves insertion order.
+
+Python dictionaries preserve insertion order (Python ≥ 3.7), but this is **not guaranteed** for every language or Hash Map implementation.
+
+---
+
+❌ Using a Hash Map when ordering matters.
+
+If sorted traversal is required, consider:
+
+- TreeMap (Java)
+- std::map (C++)
+- Ordered Dictionary
+
+---
+
+# 🚀 Interview Tips
+
+### Need O(1) lookup?
+
+✅ Hash Map
+
+---
+
+### Need to know if you've seen something?
+
+✅ Hash Map / Hash Set
+
+---
+
+### Need to count?
+
+✅ Frequency Map
+
+---
+
+### Need to associate two values?
+
+✅ Hash Map
+
+---
+
+### Need ordering?
+
+❌ Probably not a Hash Map.
+
+---
+
+# 📝 Cheat Sheet
+
+| Task | Solution |
+|------|----------|
+| Store values | `dict` |
+| Unique elements | `set` |
+| Count frequency | `dict.get()` |
+| Safe lookup | `dict.get()` |
+| Update counter | `+= 1` |
+| Membership | `in` |
+| Remove key | `del` |
+
+---
+
+# 🐍 Python Quick Reference
+
+```python
+# Create
+d = {}
+
+# Insert
+d[key] = value
+
+# Lookup
+d[key]
+
+# Safe lookup
+d.get(key)
+
+# Exists
+key in d
+
+# Delete
+del d[key]
+
+# Iterate keys
+for k in d:
+
+# Iterate values
+for v in d.values():
+
+# Iterate pairs
+for k, v in d.items():
+
+# Frequency
+freq[x] = freq.get(x, 0) + 1
+
+# Default value
+d.setdefault(key, [])
+
+# Merge
+d1.update(d2)
+
+# Size
+len(d)
+
+# Clear
+d.clear()
+```
+
+---
+
+# 🧠 Decision Flow
+
+```
+            Problem
+                │
+                ▼
+     Need fast lookup?
+          │         │
+         No        Yes
+          │         │
+          ▼         ▼
+ Continue     Seen before?
+                  │      │
+                 No     Yes
+                  │      │
+                  ▼      ▼
+            Continue   Hash Map
+                          │
+                          ▼
+              Count / Lookup / Mapping?
+                          │
+                          ▼
+                    Use Hash Map
+```
+
+---
+
+# 📌 Summary
+
+## Definition
+
+Stores data as **key → value** pairs with average **O(1)** lookup.
+
+---
+
+## Strengths
+
+- Fast lookup
+- Fast insertion
+- Fast deletion
+- Frequency counting
+- Mapping values
+- Duplicate detection
+- Memoization
+
+---
+
+## Weaknesses
+
+- Extra memory usage
+- No automatic sorting
+- Worst-case O(n) with many collisions
+
+---
+
+## Complexity
+
+| Operation | Complexity |
+|-----------|------------|
+| Insert | O(1) average |
+| Search | O(1) average |
+| Update | O(1) average |
+| Delete | O(1) average |
+| Space | O(n) |
+
+---
+
+## Remember
+
+> **Hash Maps trade memory for speed.**
+
+If the first idea that comes to mind is:
+
+> *"I need to know if I've already seen this value..."*
+
+A **Hash Map** (or **Hash Set**) is very likely the correct data structure.
