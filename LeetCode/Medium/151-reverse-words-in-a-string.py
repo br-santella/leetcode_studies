@@ -1,4 +1,4 @@
-# Reverse Words in a String [Easy][Acceptance: 56,5%]
+# Reverse Words in a String [Medium][Acceptance: 56,5%]
 # https://leetcode.com/problems/reverse-words-in-a-string/description
 
 class Solution:
